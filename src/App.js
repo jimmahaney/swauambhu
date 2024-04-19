@@ -5,6 +5,8 @@ import { Typography } from '@mui/material';
 import Tutorial from './components/Tutorial.js';
 import Bar from './components/Bar.js';
 import AnnotationList from './components/AnnotationList';
+import Twodmap from './components/Twodmap.js';
+
 
 function App() {
   const { unityProvider, sendMessage } = useUnityContext({
@@ -22,6 +24,7 @@ function App() {
   const [tutorialIsOpen, setTutorialIsOpen] = useState(true);
   const [listOpen, setListOpen] = useState(false);
   const unityRef = useRef(null);
+  const [mapIsOpen, setMapIsOpen] = useState(true);
 
   const openTutorial = () => {
     setTutorialIsOpen(true);
@@ -35,6 +38,14 @@ function App() {
     setListOpen(!listOpen);
   };
 
+  const openMap = () => {
+    setMapIsOpen(true);
+  }
+
+  const closeMap = () => {
+    setMapIsOpen(false);
+  }
+
   document.addEventListener('pointerlockerror', (event) => {
     console.log('error locking pointer');
   });
@@ -45,8 +56,10 @@ function App() {
         openHelp={openTutorial}
         menuClick={menuClick}
         menuOpened={listOpen}
+        openMap={openMap}
       />
       <Tutorial open={tutorialIsOpen} onClose={closeTutorial} />
+      <Twodmap open={mapIsOpen} onClose={closeMap} />
       <AnnotationList open={listOpen} handleShowLocation={handleShowLocation} />
       <Typography
         variant="h6"

@@ -27,7 +27,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-export default function ButtonAppBar({ openHelp, menuClick, menuOpened }) {
+export default function ButtonAppBar({ openHelp, menuClick, menuOpened, openMap }) {
   return (
     <AppBar position="fixed" style={{ background: 'black' }} open={menuOpened}>
       <Toolbar>
@@ -42,6 +42,15 @@ export default function ButtonAppBar({ openHelp, menuClick, menuOpened }) {
           sx={{ mr: 2 }}
           onClick={openHelp} >
           <HelpIcon />
+        </IconButton>
+        <IconButton
+          size="large"
+          edge="end"
+          color="inherit"
+          aria-label="help"
+          sx={{ mr: 2 }}
+          onClick={openMap} >
+          <MapIcon></MapIcon>
         </IconButton>
         <IconButton
           size="large"
