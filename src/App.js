@@ -6,6 +6,7 @@ import Tutorial from './components/Tutorial.js';
 import Bar from './components/Bar.js';
 import AnnotationList from './components/AnnotationList';
 import Twodmap from './components/Twodmap.js';
+import { FOCUSABLE_SELECTOR } from '@testing-library/user-event/dist/utils/index.js';
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
   const [tutorialIsOpen, setTutorialIsOpen] = useState(true);
   const [listOpen, setListOpen] = useState(false);
   const unityRef = useRef(null);
-  const [mapIsOpen, setMapIsOpen] = useState(true);
+  const [mapIsOpen, setMapIsOpen] = useState(false);
 
   const openTutorial = () => {
     setTutorialIsOpen(true);
@@ -59,7 +60,7 @@ function App() {
         openMap={openMap}
       />
       <Tutorial open={tutorialIsOpen} onClose={closeTutorial} />
-      <Twodmap open={mapIsOpen} onClose={closeMap} />
+      <Twodmap open={mapIsOpen} onClose={closeMap} handleShowLocation={handleShowLocation}/>
       <AnnotationList open={listOpen} handleShowLocation={handleShowLocation} />
       <Typography
         variant="h6"

@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import DialogContentText from '@mui/material/DialogContentText';
 import { useUnityContext } from 'react-unity-webgl';
 import MapImage from '../2dmap.png'
+import Annotation from './Annotation';
 
 export default function Map({ open, onClose, handleShowLocation }) {
   const { sendMessage } = useUnityContext({
@@ -26,14 +27,14 @@ export default function Map({ open, onClose, handleShowLocation }) {
       <DialogContent id="alert-dialog-description">
         {/* Use the imported image */}
         <img src={MapImage} alt="Map" style={{ maxWidth: '100%', maxHeight: '100%' }} />
-        <Button>
+        <Button
+        onClick={() => {
+          handleShowLocation(1, sendMessage);
+        }}
+        >
           Swayambhu Machaitya
         </Button>
-        <Button
-         onClick={() => {
-          handleShowLocation(num, sendMessage);
-        }}
-         >
+        <Button>
           Deva Dharma Mahvaihar
         </Button>
         <Button>
