@@ -19,7 +19,7 @@ function App() {
 
   const handleShowLocation = (num) => {
     console.log(num);
-    sendMessage('0_annotation_camera', 'SetLocation', num);
+    sendMessage('SceneController', 'Teleport', num);
   };
 
   const [tutorialIsOpen, setTutorialIsOpen] = useState(true);
